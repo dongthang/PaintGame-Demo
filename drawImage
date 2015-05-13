@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<HTML>
+	<head>
+		<script>
+		const RADIUS = 20;
+		var cx = 100;
+		var cy = 100;
+		var speedX = 2;
+		var speedY = 2;
+		var _canvas;
+		var _context;
+		var _reqAnimation;
+		var _angle = 0;
+		function update(time) {
+			cx += speedX;
+			cy += speedY;
+			if(cx<0 || cx > _canvas.width)
+			speedX = -speedX;
+			if(cy<0 || cy > _canvas.height)
+			speedY = -speedY;
+			// draw
+			_context.clearRect(0, 0, _canvas.width, _canvas.height);
+			_context.beginPath();
+			_context.arc(cx, cy, RADIUS, 0, Math.PI*2, false);
+			_context.closePath();
+			_context.fill();
+			_reqAnimation(update);
+		}
+		window.onload = function(){
+			_canvas = document.getElementById("canvas");
+			_context = _canvas.getContext("2d");
+			_context.fillStyle = "blue";
+			cx = _canvas.width/2;
+			cy = _canvas.height/2;
+			_reqAnimation = window.requestAnimationFrame ||
+			window.mozRequestAnimationFrame||
+			window.webkitRequestAnimationFrame||
+			window.msRequestAnimationFrame||
+			window.oRequestAnimationFrame;
+			if(_reqAnimation)
+				update();
+			else
+				alert("Your browser doesn't support requestAnimationFrame.");
+		};
+		
+		window.onload = function(){
+			var canvas = document.getElementById("mycanvas");
+			var context = canvas.getContext("2d");
+			
+			var img = new Image();
+			
+			img.onload = function(){
+				context.drawImage(img, 0, 0, 400, 300);
+			};
+			img.src = "/home/thangnd/Pictures/anhvidu.jpg"
+			
+		}
+		
+		</script>
+	</head>
+<body>
+<canvas id="mycanvas" width="400px" height="300px" style="border: 1px
+solid"></canvas>
+</body>
+</HTML>
