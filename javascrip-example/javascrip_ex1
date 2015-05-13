@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<HTML>
+	<head>
+		<script>
+			window.onload = function(){
+				var level;
+				level = 1;
+				var male = true;
+				var phancap = "DONG THANG";
+				var name = "dongthang.com";
+				alert(name);
+			}
+			
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</HTML>

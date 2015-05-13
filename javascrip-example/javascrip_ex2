@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<HTML>
+	<head>
+		<script>
+			window.onload = function(){
+				//cac cau re nhanh co ban trong javascript
+				
+				var level = 1;
+				
+				if(level > 2){
+					document.write("level hon hon 2");
+					console.log("level lon hon 2");
+				}else{
+					document.write("level khong lon hon 2");
+					console.log("level khong lon hon 2");
+				}
+				
+				
+			}
+			
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</HTML>

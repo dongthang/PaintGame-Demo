@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<HTML>
+	<head>
+		<script>
+			var Answer = [];
+			var Question = ['Ban co nguoi yeu chua?', 'Ban co thich an rau den khong?', 'Nguoi yeu ban co thich an rau den khong?'];
+			for(var i= 0;i<Question.length;i++){
+				var tempAns = prompt(Question[i]);
+				Answer.push(tempAns);
+			}
+			
+			for(var j =0; j<Answer.length;j++){
+				alert(Answer[j]);
+			}
+			
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</HTML>

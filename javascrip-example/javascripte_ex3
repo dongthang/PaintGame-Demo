@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<HTML>
+	<head>
+		<script>
+			var option = prompt('Ban chon phan cap nao? a: chien binh | b: sat thu | c: tho san');
+			var level;
+			var strength = 100;
+			var agility = 100;
+			if(option === 'a'){
+				level = "chien binh";
+				strength = strength  + 10;
+				agility = agility - 10;
+				document.write('Ban chon a');
+				alert('Ban da chon a');
+			}else if(option === 'b'){
+				level = "sat thu";
+				strength = strength - 10;
+				agility = agility + 10;
+				document.write('Ban chon b');
+				alert('Ban da chon b');
+			}else if(option === 'c'){
+				level = "tho san";
+				strength = strength + 20;
+				agility = agility + 10;
+				document.write('Ban chon c');
+				alert('Ban da chon c');
+			}else {
+				document.write('Ban khong chon gi ca');
+				alert('Ban da khong chon gi ca');
+			}
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</HTML>

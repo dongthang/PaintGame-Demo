@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<HTML>
+	<head>
+		<script>
+			var AnhHung = {
+				name: 'Anh hung',
+				phanLop: 'Nguoi',
+				age: '24',
+				health: 'tot',
+				
+				di: function(){
+					console.log('Anh hung di');
+				},
+				chay: function(){
+					console.log('Anh hung chay');
+				},
+				nhay: function(){
+					console.log('Anh hung nhay');
+				},
+				ngu: function(){
+					console.log('Anh hung ngu');
+				}
+			};
+			
+			console.log(AnhHung.name);
+			console.log(AnhHung.phanLop);
+			console.log(AnhHung.age);
+			console.log(AnhHung.health);
+			AnhHung.di();
+			AnhHung.chay();
+			AnhHung.ngu();
+			
+			var traDaHoi = ['Tho', 'Nga', 'Quang', 'Thang', 'Thanh'];
+			console.log(traDaHoi.length);
+			console.log(traDaHoi[0]);
+			console.log(traDaHoi[2]);
+			console.log(traDaHoi[traDaHoi.length - 1]);
+			console.log(traDaHoi);
+			//mang rong
+			var thitXien = [];
+			thitXien.push('Hieu');
+			thitXien.push('Dung');
+			console.log(thitXien);
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</HTML>

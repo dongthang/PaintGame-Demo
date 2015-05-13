@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<HTML>
+	<head>
+		<script>
+			var dragonHealth = 600;
+			var dragonStr = 100;
+			var dragonAgi = 15;
+			var dragonInt = 80;
+			var strength = skillPoints * 0.6 + xp * 0.1;
+			var agility = skillPoints * 0.2 + xp * 0.2;
+			var intel = skillPoints * 0.2 + level * 10;
+			var level = 1;
+			var xp = 0;
+			var skillPoints = 5;
+						var gameContinue = true;
+			while(gameContinue) {
+				// Anh hùng tấn công!
+				var heroHit = Math.random()*100 > dragonAgi;
+				if (heroHit) {
+					dragonHealth = dragonHealth - strength;
+					alert('TRAM LONG: Ban bi sat thuong '+strength+' diem cho rong!');
+					var heroCritical = Math.random()*100 < intel;
+					if (heroCritical) {
+						dragonHealth = dragonHealth - strength*2; // Double damage
+						alert('Chi mang! Ban gay sat thuong chi mang them '+strength*2+' diem cho rong!');
+					}
+				} else 
+					alert('Rong da tranh duoc don tan cong cua ban!');
+
+				// Rồng tấn công!
+				var dragonHit = Math.random()*100 > agility;
+				if (dragonHealth <= 0) {
+					// Rồng lên bàn thờ
+					gameContinue = false;
+					alert('Chuc mung ban da chien thang!!!');
+				} else {
+					if (dragonHit) {
+						health = health - dragonStr;
+						alert('Rong gay sat thuong '+dragonStr+' diem cho ban!');
+						var dragonCritical = Math.random()*100 < dragonInt;
+						if (dragonCritical) {
+							health = health - dragonStr*2; // Double damage
+							alert('Rong gay sat thuong chi mang them '+dragonStr*2+' diem cho ban!');
+						}
+					} else 
+						alert('Ban da tranh duoc don tan cong cua rong');
+				}
+
+				// Kiểm tra xem Anh Hùng có bị nướng?!
+				if (health <= 0) {
+					gameContinue = false;
+					alert('Ban da thua!');
+				}
+			};
+		</script>
+	</head>
+	<body>
+		
+	</body>
+</HTML>
