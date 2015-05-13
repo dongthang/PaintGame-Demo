@@ -24,7 +24,6 @@
 					context.stroke();
 					preX = x;
 					preY = y;
-					console.log(x + " " + y);
 				}
 			});
 			$('#canvas').mouseenter(function(e){
