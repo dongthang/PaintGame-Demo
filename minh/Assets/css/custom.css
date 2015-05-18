@@ -35,6 +35,7 @@ body{
 	height: 30%;
 	border: 3px solid #DADADA;
 	border-radius: 7px;
+	margin-top: 10px;
 }
 
 #tool{
@@ -51,6 +52,7 @@ body{
 	border: 3px solid #DADADA;
 	border-radius: 7px;
 	margin-top: 10px;
+	padding-bottom: 10px;
 }
 
 .button{
