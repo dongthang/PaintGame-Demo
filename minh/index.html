@@ -1,16 +1,18 @@
 <!DOCTYPE html>
 <HTML>
 <head>
+	<title>Paint Game</title>
 	<script src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="Assets/js/index.js"></script>
 	<link rel="stylesheet" type="text/css" href="Assets/css/custom.css">
 </head>
 <body>
 <div id="top" align="center">
-	<span id="time">10</span>
+	<span id="time">100</span>
 </div>
 <div class="main">
-	<div id="left">
+	
+	<div id="left" >
 		<div id="tool"></div>
 		<div id="color"></div>
 		<div id="rule" align="center">
@@ -20,6 +22,13 @@
 		</div>
 	</div>
 	<div id="right"></div>
+	<script type="text/javascript">
+			$(document).ready(function(){
+				//multiscreen();
+				prepareCanvas();
+			});
+			
+		</script>
 </div>
 </body>
 </HTML> 

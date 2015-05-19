@@ -1,5 +1,4 @@
 var canvas;
-
 var canvasWidth = 600;
 var canvasHeight = 804;
 var paint;
