@@ -258,6 +258,14 @@ function processTime(time){
 
 function startPlay(){
 	threadTime = setInterval(countTime, 1000);
+	$("#play").attr('onclick', "submitResult()");
+	$("#play").val("Submit");
+	$("#message").text("Game Start");
+}
+
+function submitResult(){
+	alert("Game Done");
+	clearInterval(threadTime);
 }
 
 
