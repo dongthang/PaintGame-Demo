@@ -260,5 +260,4 @@ function startPlay(){
 	threadTime = setInterval(countTime, 1000);
 }
 
-}
 
