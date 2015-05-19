@@ -1,5 +1,7 @@
+
+
 body{
-	
+	background-image: url("../images/background.jpg");
 }
 
 
@@ -8,6 +10,9 @@ body{
 	height: 50px;
 	background-color: black;
 }
+
+
+
 
 .main{
 	width: 100%;
@@ -29,6 +34,7 @@ body{
 	background-color: gray;
 	margin-left: 5px;
 	border-radius: 7px;
+	cursor: url("../images/cursor.png"),auto;
 }
 
 #rule{
@@ -75,6 +81,7 @@ body{
 	display: block;
 	font-size: 15px;
 	font-weight: bold;
+	margin-bottom: 10px;
 }
 
 #rule #line{
@@ -87,6 +94,7 @@ body{
 	width: 100px;
 	height: 30px;
 }
+
 
 
 

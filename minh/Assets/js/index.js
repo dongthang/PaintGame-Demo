@@ -201,9 +201,16 @@ function prepareCanvas(){
 	}
 }
 $(document).ready(function(){
-	time = 100;
+	//Set variable for time to play
+	time = 10;
+	halfTime = time/2;
+	
+	//load button color
 	loadColor();
-})
+	
+	//setup before play
+	startLevel = 1;
+}) 
 
 function loadColor(){
 	htmlButton = "";
@@ -227,16 +234,28 @@ function pickColor(color){
 
 function countTime(){
 	time = time - 1;
-	if(time == 0){
-		clearInterval(threadTime);
-		alert("Sorry !!! You LOST");
-	}
+	processTime(time)
 	$("#time").text(time);
+}
+
+function processTime(time){
+	switch(time){
+	case halfTime:
+		$("#message").text("Hurry ! Its half of time");
+		break;
+	case 0:
+		clearInterval(threadTime);
+		$("#message").text("Sorry !!! You LOST");
+		time = 10;
+		break;
+	}
 }
 
 function startPlay(){
 	threadTime = setInterval(countTime, 1000);
 }
 
-
+function pickImage(){
+	
+}
 
