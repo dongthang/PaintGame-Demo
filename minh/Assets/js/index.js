@@ -89,8 +89,8 @@ function prepareCanvas(){
 	
 	canvasDiv = document.getElementById('right');
 	canvas = document.createElement('canvas');
-	canvas.setAttribute('width', canvasWidth);
-	canvas.setAttribute('height', canvasHeight);
+	canvas.setAttribute('width', canvasDiv.offsetWidth);
+	canvas.setAttribute('height', canvasDiv.offsetHeight);
 	canvas.setAttribute('id', 'canvas');
 	canvasDiv.appendChild(canvas);
 	if(typeof G_vmlCanvasManager != 'undefined') {
@@ -214,8 +214,25 @@ $(document).ready(function(){
 	loadColor();
 	
 	//setup before play
-	startLevel = 1;
+	startLevel(1);
 }) 
+
+function startLevel(level){
+	switch(level){
+	case 1:
+		numberColor = 4;
+		retry = 0;
+		break;
+	case 2:
+		numberColor = 6;
+		retry = 2;
+		break;
+	case 3:
+		numberColor = 8;
+		retry = 3;
+		break;	
+	}
+}
 
 function loadColor(){
 	htmlButton = "";
