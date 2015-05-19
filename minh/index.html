@@ -20,7 +20,11 @@
 <div class="main">
 	
 	<div id="left" >
-		<div id="tool"></div>
+		<div id="tool">
+			<input type="button" id="tool_Pen" class="toolButton" onclick="pickTool('Pen')">
+			<input type="button" id="tool_Paint" class="toolButton" onclick="pickTool('Paint')">
+			<input type="button" id="tool_Eraser" class="toolButton" onclick="pickTool('Eraser')">
+		</div>
 		<div id="color"></div>
 		<div id="rule" align="center">
 			<span id="line">Rule here</span>

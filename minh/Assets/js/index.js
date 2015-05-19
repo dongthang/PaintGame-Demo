@@ -200,6 +200,11 @@ function prepareCanvas(){
 		
 	}
 }
+
+
+
+
+
 $(document).ready(function(){
 	//Set variable for time to play
 	time = 10;
@@ -255,7 +260,5 @@ function startPlay(){
 	threadTime = setInterval(countTime, 1000);
 }
 
-function pickImage(){
-	
 }
 
