@@ -1,19 +1,4 @@
-// Copyright 2010 William Malone (www.williammalone.com)
-//
-// Licensed under the Apache License, Version 2.0 (the "License");
-// you may not use this file except in compliance with the License.
-// You may obtain a copy of the License at
-//
-//   http://www.apache.org/licenses/LICENSE-2.0
-//
-// Unless required by applicable law or agreed to in writing, software
-// distributed under the License is distributed on an "AS IS" BASIS,
-// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-// See the License for the specific language governing permissions and
-// limitations under the License.
 
-/*jslint browser: true */
-/*global G_vmlCanvasManager, $ */
 
 var paintBucketApp = (function () {
 
@@ -22,27 +7,7 @@ var paintBucketApp = (function () {
 	var context,
 		canvasWidth = 817,
 		canvasHeight = 800,
-		colorPurple = {
-			r: 203,
-			g: 53,
-			b: 148
-		},
-		colorGreen = {
-			r: 101,
-			g: 155,
-			b: 65
-		},
-		colorYellow = {
-			r: 255,
-			g: 207,
-			b: 51
-		},
-		colorBrown = {
-			r: 152,
-			g: 105,
-			b: 40
-		},
-		curColor = colorPurple,
+
 		outlineImage = new Image(),
 		swatchImage = new Image(),
 		backgroundImage = new Image(),
@@ -65,23 +30,7 @@ var paintBucketApp = (function () {
 			context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 		},
 
-		// Draw a color swatch
-		drawColorSwatch = function (color, x, y) {
 
-			context.beginPath();
-			//draw circle
-			//context.arc(x + 46, y + 23, 18, 0, Math.PI * 2, true);
-			context.rect(x+28, y+ 5, 36, 36);
-			context.closePath();
-			context.fillStyle = "rgb(" + color.r + "," + color.g + "," + color.b + ")";
-			context.fill();
-
-			if (curColor === color) {
-				context.drawImage(swatchImage, 0, 0, 59, swatchImageHeight, x, y, 59, swatchImageHeight);
-			} else {
-				context.drawImage(swatchImage, x, y, swatchImageWidth, swatchImageHeight);
-			}
-		},
 
 		// Draw the elements on the canvas
 		redraw = function () {
@@ -98,6 +47,8 @@ var paintBucketApp = (function () {
 
 			// Draw the current state of the color layer to the canvas
 			context.putImageData(colorLayerData, 0, 0);
+
+
 			context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
 		},
 
@@ -290,9 +241,7 @@ var paintBucketApp = (function () {
 			if (typeof G_vmlCanvasManager !== "undefined") {
 				canvas = G_vmlCanvasManager.initElement(canvas);
 			}
-			context = canvas.getContext("2d"); // Grab the 2d canvas context
-			// Note: The above code is a workaround for IE 8 and lower. Otherwise we could have used:
-			//     context = document.getElementById('canvas').getContext("2d");
+			context = canvas.getContext("2d");
 
 			// Load images
 			backgroundImage.onload = resourceLoaded;
@@ -315,7 +264,7 @@ var paintBucketApp = (function () {
 				colorLayerData = context.getImageData(0, 0, canvasWidth, canvasHeight);
 				resourceLoaded();
 			};
-			outlineImage.src = "Assets/images/image1.png";
+			outlineImage.src = "Assets/images/outline_image11.png";
 		};
 
 	return {
