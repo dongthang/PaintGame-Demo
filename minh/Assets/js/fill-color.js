@@ -42,7 +42,7 @@ var paintBucketApp = (function () {
 			g: 105,
 			b: 40
 		},
-		curColor = colorPurple,
+
 		outlineImage = new Image(),
 		swatchImage = new Image(),
 		backgroundImage = new Image(),
@@ -103,18 +103,7 @@ var paintBucketApp = (function () {
 			//context.drawImage(backgroundImage, 0, 0, canvasWidth, canvasHeight);
 
 			// Draw the color swatches
-			locX = 52;
-			locY = 19;
-			drawColorSwatch(colorPurple, locX, locY);
-
-			locY += 46;
-			drawColorSwatch(colorGreen, locX, locY);
-
-			locY += 46;
-			drawColorSwatch(colorYellow, locX, locY);
-
-			locY += 46;
-			drawColorSwatch(colorBrown, locX, locY);
+			
 
 			// Draw the outline image on top of everything. We could move this to a separate 
 			//   canvas so we did not have to redraw this everyime.
