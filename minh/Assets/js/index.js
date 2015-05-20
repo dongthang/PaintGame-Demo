@@ -9,6 +9,9 @@ $(document).ready(function(){
 			b: 255
 	};
 	
+	listColorUsed = [];
+	curColorPick = "";
+	
 	
 	//setup before play
 	startLevel(1);
@@ -17,18 +20,21 @@ $(document).ready(function(){
 function startLevel(level){
 	switch(level){
 	case 1:
-		time = 20;
-		numberColor = 13;
+		time = 30;
+		onumberColor = 12;
+		numberColor = 12;
 		retry = 1;
 		break;
 	case 2:
 		time = 10;
-		numberColor = 6;
+		onumberColor = 17;
+		numberColor = 17;
 		retry = 2;
 		break;
 	case 3:
 		time = 10;
-		numberColor = 8;
+		onumberColor = 18;
+		numberColor = 18;
 		retry = 3;
 		break;	
 	}
@@ -57,6 +63,7 @@ function rendButton(id, color){
 function pickColor(color){
 	$("#button_image").attr("style","background-color: " + color + ";");
 	curColor = parseHexToRGB(color);
+	curColorPick = color;
 }
 
 function countTime(){
@@ -108,6 +115,7 @@ function cutHex(h) {return (h.charAt(0)=="#") ? h.substring(1,7):h}
 
 
 function processGame(x, y){
+	listColorUsed.push(curColorPick);
 	var ctx = document.getElementById('canvas').getContext('2d');
 	var c = ctx.getImageData(x, y, 1, 1).data;
 	if(c[0] != 0 && c[0] != 255){
@@ -134,6 +142,22 @@ function stopGame(){
 }
 
 function winGame(){
-	alert("YOU WIN !!!");
+	alert(judgeColorUser());
 	location.reload();
+}
+
+function judgeColorUser(){
+	var list = listColorUsed.filter(function(elem, index, self) {
+	    return index == self.indexOf(elem);
+	});
+	count = list.length;
+	if(count >= 1 && count <= 7){
+		return "You win this game but you SUCK !!!";
+	}
+	if(count > 7 && count < onumberColor){
+		return "You win this game, not bad, not bad";
+	}
+	if(count == onumberColor){
+		return "OMG !!! YOU GOOD. YOU WIN THIS";
+	}
 }

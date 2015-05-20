@@ -266,7 +266,7 @@ var paintBucketApp = (function () {
 				colorLayerData = context.getImageData(0, 0, canvasWidth, canvasHeight);
 				resourceLoaded();
 			};
-			outlineImage.src = "Assets/images/outline_image13.png";
+			outlineImage.src = "Assets/images/outline_image8.png";
 		};
 
 	return {
