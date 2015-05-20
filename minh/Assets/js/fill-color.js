@@ -192,9 +192,11 @@ var paintBucketApp = (function () {
 
 			$('#canvas').mousedown(function (e) {
 				// Mouse down location
+				
 				var mouseX = e.pageX - this.offsetLeft,
 					mouseY = e.pageY - this.offsetTop;
-
+					
+				processGame(mouseX, mouseY);
 				if (mouseX < drawingAreaX) { // Left of the drawing area
 					if (mouseX > swatchStartX) {
 						if (mouseY > swatchStartY && mouseY < swatchStartY + swatchImageHeight) {
@@ -271,3 +273,4 @@ var paintBucketApp = (function () {
 		init: init
 	};
 }());
+
