@@ -1,11 +1,13 @@
 $(document).ready(function(){
 	//Set variable for time to play
-	time = 10;
-	halfTime = time/2;
 	
 	//load button color
 	loadColor();
-	curColor = [];
+	curColor = {
+			r: 255,
+			g: 255,
+			b: 255
+	};
 	
 	
 	//setup before play
@@ -15,18 +17,26 @@ $(document).ready(function(){
 function startLevel(level){
 	switch(level){
 	case 1:
-		numberColor = 4;
-		retry = 0;
+		time = 20;
+		numberColor = 13;
+		retry = 1;
 		break;
 	case 2:
+		time = 10;
 		numberColor = 6;
 		retry = 2;
 		break;
 	case 3:
+		time = 10;
 		numberColor = 8;
 		retry = 3;
 		break;	
 	}
+	halfTime = time/2;
+	$("#retry").text("Number Remaining: " + retry);
+	$("#colorUser").text("Number Color To User: " + numberColor);
+	$("#timeRemain").text("The Time Remain: " + time);
+	
 }
 
 function loadColor(){
@@ -52,7 +62,7 @@ function pickColor(color){
 function countTime(){
 	time = time - 1;
 	processTime(time)
-	$("#time").text(time);
+	$("#timeRemain").text("The Time Remain: " + time);
 }
 
 function processTime(time){
@@ -61,9 +71,7 @@ function processTime(time){
 		$("#message").text("Hurry ! Its half of time");
 		break;
 	case 0:
-		clearInterval(threadTime);
-		$("#message").text("Sorry !!! You LOST");
-		time = 10;
+		stopGame();
 		break;
 	}
 }
@@ -76,8 +84,12 @@ function startPlay(){
 }
 
 function submitResult(){
-	alert("Game Done");
-	clearInterval(threadTime);
+	if(numberColor == 0){
+		winGame();
+	}
+	else{
+		stopGame();
+	}
 }
 
 function parseHexToRGB(hex){
@@ -93,3 +105,35 @@ function hexToR(h) {return parseInt((cutHex(h)).substring(0,2),16)}
 function hexToG(h) {return parseInt((cutHex(h)).substring(2,4),16)}
 function hexToB(h) {return parseInt((cutHex(h)).substring(4,6),16)}
 function cutHex(h) {return (h.charAt(0)=="#") ? h.substring(1,7):h}
+
+
+function processGame(x, y){
+	var ctx = document.getElementById('canvas').getContext('2d');
+	var c = ctx.getImageData(x, y, 1, 1).data;
+	if(c[0] != 0 && c[0] != 255){
+		retry = retry - 1;
+		$("#retry").text("Number Remaining: " + retry);
+		checkRetry();
+	}else{
+		numberColor = numberColor - 1;
+		$("#colorUser").text("Number Color To User: " + numberColor);
+	}
+}
+
+function checkRetry(){
+	if(retry == 0){
+		stopGame();
+	}
+}
+
+function stopGame(){
+	alert("Sorry !!! You lost this game");
+	clearInterval(threadTime);
+	$("#message").text("Sorry !!! You LOST");
+	location.reload();
+}
+
+function winGame(){
+	alert("YOU WIN !!!");
+	location.reload();
+}
