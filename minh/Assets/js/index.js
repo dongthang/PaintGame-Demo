@@ -1,18 +1,71 @@
-$(document).ready(function(){
-	//Set variable for time to play
+function multiscreen(){
+	console.log("call method multiscreen");
+		var game = {
+			element: document.getElementById("main"),
+			width: 1280,
+			height: 800,
+			safeWidth: 1024,
+			safeHeight: 720
+		},
 	
-	//load button color
+	resizeGame = function () {
+	
+		var viewport, newGameWidth, newGameHeight, newGameX, newGameY;
+						
+		// Get the dimensions of the viewport
+		viewport = {
+			width: window.innerWidth,
+			height: window.innerHeight
+		};
+		
+		// Determine game size
+		if (game.height / game.width > viewport.height / viewport.width) {
+			if (game.safeHeight / game.width > viewport.height / viewport.width) {
+			  // A
+			  newGameHeight = viewport.height * game.height / game.safeHeight;
+			  newGameWidth = newGameHeight * game.width / game.height;
+			} else {
+			  // B
+			  newGameWidth = viewport.width;
+			  newGameHeight = newGameWidth * game.height / game.width;
+			}
+		} else {
+			if (game.height / game.safeWidth > viewport.height / viewport.width) {
+				// C
+				newGameHeight = viewport.height;
+				newGameWidth = newGameHeight * game.width / game.height;
+			} else {
+				// D
+				newGameWidth = viewport.width * game.width / game.safeWidth;
+				newGameHeight = newGameWidth * game.height / game.width;
+			}
+		}
+		
+		game.element.style.width = newGameWidth + "px";
+		game.element.style.height = newGameHeight + "px";
+		  
+		newGameX = (viewport.width - newGameWidth) / 2;
+		newGameY = (viewport.height - newGameHeight) / 2;
+				
+		// Set the new padding of the game so it will be centered
+		game.element.style.margin = newGameY + "px " + newGameX + "px";
+	};
+
+	window.addEventListener("resize", resizeGame);
+	resizeGame();
+}
+
+
+$(document).ready(function(){
+	
 	loadColor();
 	curColor = {
 			r: 255,
 			g: 255,
 			b: 255
 	};
-	
 	listColorUsed = [];
 	curColorPick = "";
-	
-	
 	//setup before play
 	startLevel(1);
 }) 
@@ -84,6 +137,7 @@ function processTime(time){
 }
 
 function startPlay(){
+	startgame = true;
 	threadTime = setInterval(countTime, 1000);
 	$("#play").attr('onclick', "submitResult()");
 	$("#play").val("Submit");
@@ -160,4 +214,8 @@ function judgeColorUser(){
 	if(count == onumberColor){
 		return "OMG !!! YOU GOOD. YOU WIN THIS";
 	}
+}
+
+function startPen(){
+	prepareCanvas();
 }

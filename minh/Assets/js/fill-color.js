@@ -7,14 +7,10 @@ var paintBucketApp = (function () {
 	var context,
 		canvasWidth = 817,
 		canvasHeight = 800,
-
+		startgame,
 		outlineImage = new Image(),
 		swatchImage = new Image(),
 		backgroundImage = new Image(),
-		swatchStartX = 18,
-		swatchStartY = 19,
-		swatchImageWidth = 93,
-		swatchImageHeight = 46,
 		drawingAreaX = 0,
 		drawingAreaY = 0,
 		drawingAreaWidth = 817,
@@ -23,15 +19,11 @@ var paintBucketApp = (function () {
 		outlineLayerData,
 		totalLoadResources = 3,
 		curLoadResNum = 0,
-
 		// Clears the canvas.
 		clearCanvas = function () {
 
 			context.clearRect(0, 0, context.canvas.width, context.canvas.height);
 		},
-
-
-
 		// Draw the elements on the canvas
 		redraw = function () {
 
@@ -42,9 +34,7 @@ var paintBucketApp = (function () {
 			if (curLoadResNum < totalLoadResources) {
 				return;
 			}
-
 			clearCanvas();
-
 			// Draw the current state of the color layer to the canvas
 			context.putImageData(colorLayerData, 0, 0);
 
@@ -197,26 +187,15 @@ var paintBucketApp = (function () {
 					mouseY = e.pageY - this.offsetTop;
 					
 				processGame(mouseX, mouseY);
-				if (mouseX < drawingAreaX) { // Left of the drawing area
-					if (mouseX > swatchStartX) {
-						if (mouseY > swatchStartY && mouseY < swatchStartY + swatchImageHeight) {
-							curColor = colorPurple;
-							redraw();
-						} else if (mouseY > swatchStartY + swatchImageHeight && mouseY < swatchStartY + swatchImageHeight * 2) {
-							curColor = colorGreen;
-							redraw();
-						} else if (mouseY > swatchStartY + swatchImageHeight * 2 && mouseY < swatchStartY + swatchImageHeight * 3) {
-							curColor = colorYellow;
-							redraw();
-						} else if (mouseY > swatchStartY + swatchImageHeight * 3 && mouseY < swatchStartY + swatchImageHeight * 4) {
-							curColor = colorBrown;
-							redraw();
-						}
-					}
-				} else if ((mouseY > drawingAreaY && mouseY < drawingAreaY + drawingAreaHeight) && (mouseX <= drawingAreaX + drawingAreaWidth)) {
+				//
+					if ((mouseY > drawingAreaY && mouseY < drawingAreaY + drawingAreaHeight) && (mouseX <= drawingAreaX + drawingAreaWidth)) {
 					// Mouse click location on drawing area
 					paintAt(mouseX, mouseY);
-				}
+					}
+				//}else{
+				//	window.alert("Please click Play button to start game");
+				//}
+				
 			});
 		},
 
@@ -232,6 +211,7 @@ var paintBucketApp = (function () {
 
 		// Creates a canvas element, loads images, adds events, and draws the canvas for the first time.
 		init = function () {
+			
 
 			// Create the canvas (Neccessary for IE because it doesn't know what a canvas element is)
 			var canvas = document.createElement('canvas');
@@ -247,10 +227,10 @@ var paintBucketApp = (function () {
 
 			// Load images
 			backgroundImage.onload = resourceLoaded;
-			backgroundImage.src = "images/background.png";
+			backgroundImage.src = "Assets/images/outline_image8.png";
 
 			swatchImage.onload = resourceLoaded;
-			swatchImage.src = "images/temp.png";
+			swatchImage.src = "Assets/images/outline_image8.png";
 
 			outlineImage.onload = function () {
 				context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
