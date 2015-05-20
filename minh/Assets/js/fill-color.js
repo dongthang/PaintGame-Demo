@@ -20,8 +20,8 @@ var paintBucketApp = (function () {
 	"use strict";
 
 	var context,
-		canvasWidth = 490,
-		canvasHeight = 220,
+		canvasWidth = 817,
+		canvasHeight = 800,
 		colorPurple = {
 			r: 203,
 			g: 53,
@@ -50,10 +50,10 @@ var paintBucketApp = (function () {
 		swatchStartY = 19,
 		swatchImageWidth = 93,
 		swatchImageHeight = 46,
-		drawingAreaX = 111,
-		drawingAreaY = 11,
-		drawingAreaWidth = 267,
-		drawingAreaHeight = 200,
+		drawingAreaX = 0,
+		drawingAreaY = 0,
+		drawingAreaWidth = 817,
+		drawingAreaHeight = 800,
 		colorLayerData,
 		outlineLayerData,
 		totalLoadResources = 3,
