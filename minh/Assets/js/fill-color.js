@@ -227,10 +227,10 @@ var paintBucketApp = (function () {
 
 			// Load images
 			backgroundImage.onload = resourceLoaded;
-			backgroundImage.src = "Assets/images/outline_image8.png";
+			backgroundImage.src = linkImage;
 
 			swatchImage.onload = resourceLoaded;
-			swatchImage.src = "Assets/images/outline_image8.png";
+			swatchImage.src = linkImage;
 
 			outlineImage.onload = function () {
 				context.drawImage(outlineImage, drawingAreaX, drawingAreaY, drawingAreaWidth, drawingAreaHeight);
@@ -246,7 +246,7 @@ var paintBucketApp = (function () {
 				colorLayerData = context.getImageData(0, 0, canvasWidth, canvasHeight);
 				resourceLoaded();
 			};
-			outlineImage.src = "Assets/images/outline_image8.png";
+			outlineImage.src = linkImage;
 		};
 
 	return {

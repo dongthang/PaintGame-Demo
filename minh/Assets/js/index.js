@@ -57,7 +57,6 @@ function multiscreen(){
 
 
 $(document).ready(function(){
-	
 	loadColor();
 	curColor = {
 			r: 255,
@@ -67,27 +66,49 @@ $(document).ready(function(){
 	listColorUsed = [];
 	curColorPick = "";
 	//setup before play
-	startLevel(1);
+	createLevelSession();
+	displayStar();
+	linkImage = "Assets/images/level" + localStorage.getItem("level") + ".png";
+	startLevel(localStorage.getItem("level"));
 }) 
+
+function displayStar(){
+	var stars = localStorage.getItem("star");
+	list = stars.split("");
+	htmlStar = "";
+	for(i = 0; i < stars.length; i++){
+		htmlStar += "<img alt='' src='Assets/images/star" + list[i] + ".png'>";
+	}
+	$("#star").html(htmlStar);
+}
+
+function createLevelSession(){
+	if(localStorage.getItem("level") == null){
+		localStorage.setItem("level", 1);
+	}
+	if(localStorage.getItem("star") == null){
+		localStorage.setItem("star", "");
+	}
+}
 
 function startLevel(level){
 	switch(level){
-	case 1:
+	case "1":
 		time = 30;
 		onumberColor = 12;
 		numberColor = 12;
 		retry = 1;
 		break;
-	case 2:
-		time = 10;
-		onumberColor = 17;
-		numberColor = 17;
+	case "2":
+		time = 40;
+		onumberColor = 20;
+		numberColor = 20;
 		retry = 2;
 		break;
-	case 3:
-		time = 10;
-		onumberColor = 18;
-		numberColor = 18;
+	case "3":
+		time = 40;
+		onumberColor = 21;
+		numberColor = 21;
 		retry = 3;
 		break;	
 	}
@@ -128,11 +149,22 @@ function countTime(){
 function processTime(time){
 	switch(time){
 	case halfTime:
-		$("#message").text("Hurry ! Its half of time");
+		$("#message").text("HALF TIME");
 		break;
 	case 0:
 		stopGame();
 		break;
+	}
+	if(time < halfTime){
+		changeColorTime(time);
+	}
+}
+
+function changeColorTime(time){
+	if(time % 2 == 0){
+		$("#message").css("color","red");
+	}else{
+		$("#message").css("color","black");
 	}
 }
 
@@ -192,11 +224,14 @@ function stopGame(){
 	alert("Sorry !!! You lost this game");
 	clearInterval(threadTime);
 	$("#message").text("Sorry !!! You LOST");
+	localStorage.setItem("level", 1);
+	localStorage.setItem("star", "");
 	location.reload();
 }
 
 function winGame(){
 	alert(judgeColorUser());
+	addLevel();
 	location.reload();
 }
 
@@ -205,15 +240,30 @@ function judgeColorUser(){
 	    return index == self.indexOf(elem);
 	});
 	count = list.length;
+	result = "";
 	if(count >= 1 && count <= 7){
+		result = "3";
+		addStarToResult(result);
 		return "You win this game but you SUCK !!!";
 	}
 	if(count > 7 && count < onumberColor){
+		result = "2";
+		addStarToResult(result);
 		return "You win this game, not bad, not bad";
 	}
 	if(count == onumberColor){
+		result = "1";
+		addStarToResult(result);
 		return "OMG !!! YOU GOOD. YOU WIN THIS";
 	}
+}
+
+function addStarToResult(result){
+	localStorage.setItem("star", localStorage.getItem("star") + result);
+}
+
+function addLevel(){
+	localStorage.setItem("level", parseInt(localStorage.getItem("level")) + 1);
 }
 
 function startPen(){

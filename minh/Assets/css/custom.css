@@ -1,5 +1,3 @@
-
-
 body{
 	background-image: url("../images/background.jpg");
 }
@@ -47,6 +45,15 @@ body{
 	border: 3px solid #DADADA;
 	border-radius: 7px;
 	margin-top: 10px;
+	background-color: white;
+}
+
+#tool #message{
+	margin-top: 50px;
+	display: block;
+	font-family: fantasy;
+	font-weight: bold;
+	font-size: 35px;	
 }
 
 #color{
@@ -109,5 +116,6 @@ body{
 #tool_Eraser{
 	background-image: url("../images/Eraser.png");
 }
+
 
 
