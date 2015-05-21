@@ -187,14 +187,10 @@ var paintBucketApp = (function () {
 					mouseY = e.pageY - this.offsetTop;
 					
 				processGame(mouseX, mouseY);
-				//
-					if ((mouseY > drawingAreaY && mouseY < drawingAreaY + drawingAreaHeight) && (mouseX <= drawingAreaX + drawingAreaWidth)) {
-					// Mouse click location on drawing area
+				if ((mouseY > drawingAreaY && mouseY < drawingAreaY + drawingAreaHeight) && (mouseX <= drawingAreaX + drawingAreaWidth)) {
 					paintAt(mouseX, mouseY);
-					}
-				//}else{
-				//	window.alert("Please click Play button to start game");
-				//}
+				}
+
 				
 			});
 		},

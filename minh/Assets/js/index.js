@@ -47,7 +47,6 @@ function multiscreen(){
 		newGameX = (viewport.width - newGameWidth) / 2;
 		newGameY = (viewport.height - newGameHeight) / 2;
 				
-		// Set the new padding of the game so it will be centered
 		game.element.style.margin = newGameY + "px " + newGameX + "px";
 	};
 
@@ -58,6 +57,7 @@ function multiscreen(){
 
 $(document).ready(function(){
 	loadColor();
+	//set curent color is white
 	curColor = {
 			r: 255,
 			g: 255,
@@ -95,20 +95,20 @@ function startLevel(level){
 	switch(level){
 	case "1":
 		time = 30;
-		onumberColor = 12;
-		numberColor = 12;
+		onumberColor = 5;
+		numberColor = 5;
 		retry = 1;
 		break;
 	case "2":
 		time = 40;
-		onumberColor = 20;
-		numberColor = 20;
+		onumberColor = 8;
+		numberColor = 13;
 		retry = 2;
 		break;
 	case "3":
-		time = 40;
-		onumberColor = 21;
-		numberColor = 21;
+		time = 60;
+		onumberColor = 13;
+		numberColor = 13;
 		retry = 3;
 		break;	
 	}
@@ -121,7 +121,11 @@ function startLevel(level){
 
 function loadColor(){
 	htmlButton = "";
-	listColor = ["#1567DD","#DDA615","#DD1538","#7CA381","#1F0E1E","#DA29CF","#2CDE43","#2CDECF","#3FDE2C","#DE2C43", "#2CCADE", "#96A433","#3FE96C","#921FE3","#5BD3D9","#393DD3" ];
+	listColor = ["#FFFFFF","#00FFFF","#00CC33","#FF6633",
+				"#FF3333","#FFCCCC","#FFFF66","#2CDECF",
+				"#3FDE2C","#DE2C43", "#2CCADE","#96A433",
+				"#3FE96C","#921FE3","#5BD3D9","#393DD3",
+				"#FFFFFF", "#FFFFCC","#009900", "#003300"];
 	for(i = 0; i < listColor.length; i++){
 		htmlButton += rendButton("color" + i, listColor[i]);
 	}
@@ -264,8 +268,4 @@ function addStarToResult(result){
 
 function addLevel(){
 	localStorage.setItem("level", parseInt(localStorage.getItem("level")) + 1);
-}
-
-function startPen(){
-	prepareCanvas();
 }
