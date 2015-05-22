@@ -83,7 +83,7 @@ function displayStar(){
 }
 
 function createLevelSession(){
-	if(localStorage.getItem("level") == null){
+	if(localStorage.getItem("level") == null || localStorage.getItem("level") == 4){
 		localStorage.setItem("level", 1);
 	}
 	if(localStorage.getItem("star") == null){
@@ -95,20 +95,20 @@ function startLevel(level){
 	switch(level){
 	case "1":
 		time = 30;
-		onumberColor = 5;
-		numberColor = 5;
+		onumberColor = 12;
+		numberColor = 12;
 		retry = 1;
 		break;
 	case "2":
 		time = 40;
-		onumberColor = 8;
-		numberColor = 13;
+		onumberColor = 20;
+		numberColor = 20;
 		retry = 2;
 		break;
 	case "3":
 		time = 60;
-		onumberColor = 13;
-		numberColor = 13;
+		onumberColor = 22;
+		numberColor = 22;
 		retry = 3;
 		break;	
 	}
@@ -121,11 +121,7 @@ function startLevel(level){
 
 function loadColor(){
 	htmlButton = "";
-	listColor = ["#FFFFFF","#00FFFF","#00CC33","#FF6633",
-				"#FF3333","#FFCCCC","#FFFF66","#2CDECF",
-				"#3FDE2C","#DE2C43", "#2CCADE","#96A433",
-				"#3FE96C","#921FE3","#5BD3D9","#393DD3",
-				"#FFFFFF", "#FFFFCC","#009900", "#003300"];
+	listColor = ["#1567DD","#DDA615","#DD1538","#7CA381","#1F0E1E","#DA29CF","#2CDE43","#2CDECF","#3FDE2C","#DE2C43", "#2CCADE", "#96A433","#3FE96C","#921FE3","#5BD3D9","#393DD3", "#FF0000", "#6A3636", "#DFEE44", "#C92F82" ];
 	for(i = 0; i < listColor.length; i++){
 		htmlButton += rendButton("color" + i, listColor[i]);
 	}

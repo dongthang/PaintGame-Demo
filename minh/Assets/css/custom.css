@@ -74,9 +74,9 @@ body{
 }
 
 #button_image{
-	width: 250px;
+	width: 320px;
 	height: 80px;
-	margin-left: 45px;
+	margin: 13px;
 	border-radius: 7px;
 }
 
@@ -92,6 +92,7 @@ body{
 	word-wrap: break-word;
 	margin: 10px;
 	display: block;
+	text-align: left;
 }
 
 #play{
